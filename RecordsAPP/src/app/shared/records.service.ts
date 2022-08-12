@@ -9,10 +9,17 @@ export class RecordsService {
 
   constructor(private http:HttpClient) { }
 
-  formData:Records = new Records();
   readonly baseURL = 'http://localhost:36120/api/Records'
+  formData:Records = new Records();
+  list : Records[];
 
   postRecords(){
     return this.http.post(this.baseURL,this.formData);
+  }
+
+  refreshList(){
+    this.http.get(this.baseURL)
+    .toPromise()
+    .then(res => this.list = res as Records[]);
   }
 }

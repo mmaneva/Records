@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RecordsService } from '../shared/records.service';
 
 @Component({
   selector: 'app-records',
@@ -8,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecordsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public service: RecordsService) { }
 
   ngOnInit(): void {
+    this.service.refreshList();
   }
 
 }
