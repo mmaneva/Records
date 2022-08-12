@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RecordsService } from 'src/app/shared/records.service';
 
 @Component({
   selector: 'app-records-form',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecordsFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(public service:RecordsService) { }
 
   ngOnInit(): void {
   }
