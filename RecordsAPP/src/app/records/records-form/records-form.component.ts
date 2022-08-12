@@ -18,10 +18,29 @@ export class RecordsFormComponent implements OnInit {
   }
 
   onSubmit(form:NgForm){
+    if(this.service.formData.id == 0)
+      this.insertRecord(form);
+    else
+      this.updateRecord(form);
+  }
+
+  insertRecord(form:NgForm){
     this.service.postRecords().subscribe(
       res => {
         this.resetForm(form);
+        this.service.refreshList();
         this.toastr.success('Submitted successfully','Records Detail')
+      },
+      err => { console.log(err) }
+    )
+  }
+
+  updateRecord(form:NgForm){
+    this.service.putRecords().subscribe(
+      res => {
+        this.resetForm(form);
+        this.service.refreshList();
+        this.toastr.info('Updated successfully','Records Detail')
       },
       err => { console.log(err) }
     )

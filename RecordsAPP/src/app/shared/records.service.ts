@@ -17,6 +17,14 @@ export class RecordsService {
     return this.http.post(this.baseURL,this.formData);
   }
 
+  putRecords(){
+    return this.http.put(`${this.baseURL}/${this.formData.id}`,this.formData);
+  }
+
+  deleteRecords(id:number){
+    return this.http.delete(`${this.baseURL}/${id}`);
+  }
+
   refreshList(){
     this.http.get(this.baseURL)
     .toPromise()
